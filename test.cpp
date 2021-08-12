@@ -16,7 +16,12 @@ void printList(Node* n){
         n = n->next;
     }
 }
-
+void insertFront (Node** head, int newValue) {
+    Node* newNode = new Node();
+    newNode -> value = newValue;
+    newNode -> next = *head;
+    *head = newNode;
+}
 int main (){
     Node* head = new Node();
     Node* second = new Node();
@@ -27,8 +32,9 @@ int main (){
     second -> value =2;
     second -> next = last;
     last -> value = 3;
-    last -> next = NULL;
-
+    last -> next = NULL; 
+    insertFront(&head, -1);
+    insertFront(&head, -2);
     printList(head);
     return 0;
 }
