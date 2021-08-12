@@ -48,7 +48,22 @@ void insertEnd(Node** head, int newValue){
     last->next = newNode;
 }
 
+//This function will insert a new node after a specific node
+void insertNode(Node* previous, int newValue){
+    //1. Check if previous node is NULL
+    if (previous == NULL){
+        cout << "Previous cannot be NULL";
+        return;
+    }
 
+    //2. Prepare a newNode
+    Node* newNode = new Node();
+    newNode -> value = newValue;
+
+    //3. Insert newNode after previous
+    newNode -> next = previous ->next;
+    previous ->next = newNode;
+}
 int main (){
     Node* head = new Node();
     Node* second = new Node();
@@ -62,7 +77,7 @@ int main (){
     last -> next = NULL; 
     insertFront(&head, -1);
     insertFront(&head, -2);
-
+    insertNode(second, 7);
     insertEnd(&head, 4);
     printList(head);
     return 0;
